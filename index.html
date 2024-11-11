@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake news Detector</title>
+</head>
+<style>   
+.styled-textarea {  
+    width: 100%;  
+    max-width: 500px;
+    height: 150px;          
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .styled-textarea:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.6);
+    outline: none;
+  }
+  
+  .styled-textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+  }
+  /* Styling the button */
+.styled-button {
+  padding: 12px 24px;           /* Padding inside the button */
+  font-size: 16px;              /* Font size */
+  font-weight: bold;            /* Bold text */
+  color: white;                 /* Text color */
+  background-color: #4CAF50;    /* Green background color */
+  border: none;                 /* Remove default border */
+  border-radius: 8px;           /* Rounded corners */
+  cursor: pointer;             /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Button hover effect */
+.styled-button:hover {
+  background-color: #45a049;    /* Slightly darker green on hover */
+  transform: scale(1.05);        /* Button grows a little on hover */
+}
+
+/* Button active (pressed) effect */
+.styled-button:active {
+  background-color: #398c40;    /* Darker green when the button is pressed */
+  transform: scale(0.98);        /* Slightly shrinks when clicked */
+}
+
+/* Button focus effect (for accessibility) */
+.styled-button:focus {
+  outline: none;                 /* Remove default focus outline */
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.6); /* Blue glow around the button */
+}
+/* Styling the heading */
+.styled-heading {
+  font-family: 'Arial', sans-serif; /* Font family */
+  font-size: 36px;                  /* Font size */
+  font-weight: bold;                /* Bold font weight */
+  color: #333;                      /* Dark gray color for text */
+  text-align: center;               /* Center-align the heading */
+  margin: 20px 0;                   /* Margin above and below the heading */
+  text-transform: uppercase;        /* Uppercase text */
+  letter-spacing: 2px;              /* Add some spacing between letters */
+  background-color: #f0f0f0;        /* Light gray background */
+  padding: 10px 0;                  /* Padding above and below the text */
+  border-radius: 8px;               /* Rounded corners for the background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow around the heading */
+  transition: transform 0.3s ease;  /* Smooth transition for transform effect */
+}
+
+/* Add a hover effect */
+.styled-heading:hover {
+  transform: scale(1.05);           /* Slightly scale up on hover */
+  color: #4CAF50;                   /* Change text color on hover */
+}
+
+/* Add a focus effect for accessibility (when clicked or tabbed to) */
+.styled-heading:focus {
+  outline: none;                    /* Remove the default outline */
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.6); /* Blue glow effect */
+}
+
+</style>
+<body style="background-color: rgba(147, 246, 230, 0.438);">
+
+    <h1 class="styled-heading">Fake news Detector</h1>
+
+    <form action="/predict" method="post">
+        <label style=" font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size:xx-large;">Enter news</label><br>
+        <textarea class="styled-textarea" rows="20" cols="100" name="news" placeholder="Enter the news that you want to verify..."></textarea><br>
+        <input type="submit" value="Predict" class="styled-button">
+    </form>
+
+    {% if label %}
+        {% if label == 1 %}
+            <h2 class="output" style="color:green; text-align: center;">Not Fake news. You can trust the news.</h2>
+        {% else %}
+            <h2 class="output" style="color:red; text-align: center;">Fake news. You have recieved wrong information.</h2>
+        {% endif %}
+    {% endif %}
+
+</body>
+</html>
